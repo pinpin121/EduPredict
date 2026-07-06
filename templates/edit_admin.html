@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="max-w-lg mx-auto mt-10 bg-white shadow-lg rounded-xl p-8">
+
+    <h2 class="text-2xl font-bold text-emerald-700 mb-6">
+        Edit Data Admin
+    </h2>
+
+    <form method="POST">
+
+        <div class="mb-4">
+            <label class="font-semibold">Username</label>
+            <input type="text"
+                   name="username"
+                   value="{{ admin.username }}"
+                   class="w-full border rounded-lg p-3">
+        </div>
+
+        <div class="mb-4">
+            <label class="font-semibold">Email</label>
+            <input type="email"
+                   name="email"
+                   value="{{ admin.email }}"
+                   class="w-full border rounded-lg p-3">
+        </div>
+
+        <div class="flex justify-between">
+
+            <a href="{{ url_for('admin') }}"
+               class="bg-gray-500 text-white px-5 py-2 rounded-lg">
+
+                Kembali
+
+            </a>
+
+            <button
+                type="submit"
+                class="bg-emerald-700 text-white px-5 py-2 rounded-lg">
+
+                Simpan
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

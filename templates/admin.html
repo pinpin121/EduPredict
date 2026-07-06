@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Kelola Admin</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<head>
+
+<style>
+
+body{
+    background-image:url("/static/gedung_uin.jpeg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+</style>
+
+</head>
+<div class="min-h-screen bg-black/55">
+
+<div class="max-w-7xl mx-auto py-10 px-8">
+  
+<div class="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden">
+
+<div class="bg-emerald-800 text-white p-8">
+
+<h1 class="text-3xl font-black">
+
+<i class="fas fa-user-shield"></i>
+
+Kelola Admin EduPredict ANN
+
+</h1>
+
+<p class="mt-2 text-emerald-100">
+
+Manajemen akun administrator sistem.
+
+</p>
+
+</div>
+
+<div class="grid grid-cols-3 gap-5 p-6">
+
+<div class="bg-emerald-50 rounded-xl p-5">
+
+<h2 class="text-sm text-gray-500">
+
+Total Admin
+
+</h2>
+
+<p class="text-4xl font-bold text-emerald-700">
+
+{{ total_admin }}
+
+</p>
+
+</div>
+
+<div class="bg-blue-50 rounded-xl p-5">
+
+<h2 class="text-sm text-gray-500">
+
+Status Sistem
+
+</h2>
+
+<p class="text-xl font-bold text-blue-700">
+
+Aktif
+
+</p>
+
+</div>
+
+<div class="bg-amber-50 rounded-xl p-5">
+
+<h2 class="text-sm text-gray-500">
+
+Role
+
+</h2>
+
+<p class="text-xl font-bold text-amber-700">
+
+Administrator
+
+</p>
+
+</div>
+
+</div>
+
+<div class="px-6">
+
+<div class="flex justify-between mb-4">
+
+
+<a
+href="/register"
+class="bg-emerald-700 text-white px-5 py-2 rounded-lg">
+
+<i class="fas fa-plus"></i>
+
+Tambah Admin
+
+</a>
+
+</div>
+
+<table class="w-full">
+
+<thead>
+
+<tr class="bg-slate-100">
+
+<th class="p-3">No</th>
+
+<th>Username</th>
+
+<th>Email</th>
+
+<th>Status</th>
+
+<th>Aksi</th>
+
+</tr>
+
+</thead>
+
+<tbody id="adminTable">
+
+{% for a in admins %}
+
+<tr class="border-b hover:bg-slate-50">
+
+<td class="p-3">
+
+{{ loop.index }}
+
+</td>
+
+<td>
+
+<i class="fas fa-user-circle text-emerald-700"></i>
+
+{{ a.username }}
+
+</td>
+
+<td>
+
+{{ a.email }}
+
+</td>
+
+<td>
+
+<span
+class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">
+
+Aktif
+
+</span>
+
+</td>
+
+<td>
+
+<a href="{{ url_for('edit_admin', id=a.id) }}"
+   class="text-blue-600 hover:text-blue-800">
+    <i class="fas fa-edit"></i>
+</a>
+
+<a
+href="/hapus_admin/{{a.id}}"
+onclick="return confirm('Hapus admin?')"
+class="text-red-600 ml-3">
+
+<i class="fas fa-trash"></i>
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="p-5 text-center">
+
+<a
+href="/dashboard"
+class="bg-slate-700 text-white px-5 py-2 rounded-lg">
+
+<i class="fas fa-arrow-left"></i>
+
+Kembali Dashboard
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const search=document.getElementById("search");
+
+search.addEventListener("keyup",function(){
+
+let filter=this.value.toLowerCase();
+
+let rows=document.querySelectorAll("#adminTable tr");
+
+rows.forEach(function(row){
+
+let txt=row.innerText.toLowerCase();
+
+row.style.display=txt.includes(filter)?"":"none";
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>

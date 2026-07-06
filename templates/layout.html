@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}EduPredict ANN{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <div class="bg-emerald-950 text-emerald-100 text-[11px] font-medium py-2 px-6 md:px-12 flex flex-col md:flex-row justify-between items-center border-b border-emerald-800 gap-2">
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-map-marker-alt text-amber-400"></i>
+            <span>Kampus 2 UIN Syech M. Djamil Djambek Bukittinggi</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="tel:083852772735" class="hover:text-white transition flex items-center space-x-1.5">
+                <i class="fas fa-phone-alt text-amber-400"></i>
+                <span>083852772735</span>
+            </a>
+            <a href="mailto:vina@uinbukittinggi" class="hover:text-white transition flex items-center space-x-1.5">
+                <i class="fas fa-envelope text-amber-400"></i>
+                <span>vina@uinbukittinggi</span>
+            </a>
+        </div>
+    </div>
+
+    <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-slate-100 px-6 md:px-12 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <img src="/static/logo.png" alt="Logo UIN" class="h-10 w-10 object-contain">
+            <a href="/">
+                <span class="font-black text-emerald-800 tracking-tight text-lg block leading-none">EduPredict <span class="text-amber-500">ANN</span></span>
+                <span class="text-[9px] text-slate-400 font-semibold uppercase tracking-wider block mt-1">Sistem Evaluasi Akademik</span>
+            </a>
+        </div>
+        
+        <div class="hidden md:flex items-center space-x-8 text-xs font-bold text-slate-600 uppercase tracking-wider">
+            <a href="/solusi" class="hover:text-emerald-700 transition {% if active_page == 'solusi' %}text-emerald-700 border-b-2 border-emerald-600 pb-1{% endif %}">Solusi</a>
+            <a href="/tentang" class="hover:text-emerald-700 transition {% if active_page == 'tentang' %}text-emerald-700 border-b-2 border-emerald-600 pb-1{% endif %}">Tentang Kami</a>
+            <a href="/hubungi" class="hover:text-emerald-700 transition {% if active_page == 'hubungi' %}text-emerald-700 border-b-2 border-emerald-600 pb-1{% endif %}">Hubungi Kami</a>
+        </div>
+
+        <div>
+            <a href="/login" class="bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs px-6 py-2.5 rounded-full uppercase tracking-wider shadow-md hover:shadow-lg transition">
+                Login
+            </a>
+        </div>
+    </nav>
+
+    <div class="flex-grow">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

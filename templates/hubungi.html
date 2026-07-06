@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block title %}Hubungi Kami - EduPredict ANN{% endblock %}
+
+{% block content %}
+<div class="relative bg-cover bg-center min-h-[calc(100vh-88px)] flex items-center px-6 md:px-12 py-16" style="background-image: linear-gradient(to bottom, rgba(2, 44, 34, 0.95), rgba(4, 63, 47, 0.9)), url('/static/gedung_uin.jpeg');">
+    <div class="max-w-md mx-auto bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-2xl text-white text-center space-y-6">
+        <div class="w-16 h-16 bg-emerald-800/80 rounded-2xl flex items-center justify-center text-amber-400 text-2xl mx-auto border border-emerald-500/30">
+            <i class="fas fa-comments"></i>
+        </div>
+        
+        <div>
+            <h2 class="text-2xl font-black tracking-tight text-amber-400">Hubungi Layanan Sistem</h2>
+            <p class="text-xs text-emerald-200 mt-1">Kami siap membantu integrasi dan pelaporan data akademik</p>
+        </div>
+
+        <div class="space-y-3 text-left text-xs pt-2">
+            <div class="flex items-center space-x-3 bg-emerald-950/50 p-4 rounded-xl border border-emerald-500/10">
+                <i class="fas fa-phone-alt text-amber-400 text-base"></i>
+                <div>
+                    <div class="opacity-60 text-[10px] font-mono">TELEPON / SMS</div>
+                    <div class="font-bold text-sm text-slate-100">083852772735</div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3 bg-emerald-950/50 p-4 rounded-xl border border-emerald-500/10">
+                <i class="fas fa-envelope text-amber-400 text-base"></i>
+                <div>
+                    <div class="opacity-60 text-[10px] font-mono">EMAIL RESMI</div>
+                    <div class="font-bold text-sm text-slate-100">vina@uinbukittinggi</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-4">
+            <a href="https://wa.me/6283852772735?text=Halo%20Vina,%20saya%20ingin%20bertanya%20mengenai%20Sistem%20EduPredict%20ANN" target="_blank" class="w-full inline-flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3.5 rounded-xl transition shadow-lg shadow-emerald-900/40 uppercase tracking-wider">
+                <i class="fab fa-whatsapp text-sm"></i> <span>Hubungi via WhatsApp</span>
+            </a>
+        </div>
+
+        <div class="pt-2">
+            <a href="/" class="text-xs font-bold text-amber-400 hover:underline"><i class="fas fa-arrow-left mr-1"></i> Kembali ke Beranda</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

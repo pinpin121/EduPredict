@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Surat Panggilan Orang Tua</title>
+
+<style>
+
+body{
+    font-family:"Times New Roman";
+    margin:60px;
+    font-size:16px;
+}
+
+.judul{
+    text-align:center;
+}
+
+table{
+    width:100%;
+}
+
+.ttd{
+    margin-top:70px;
+    width:300px;
+    float:right;
+    text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="judul">
+
+<h2>UNIVERSITAS ISLAM NEGERI</h2>
+<h2>SJECH M. DJAMIL DJAMBEK BUKITTINGGI</h2>
+
+<h3>PROGRAM STUDI PENDIDIKAN TEKNIK INFORMATIKA DAN KOMPUTER</h3>
+
+<hr>
+
+<h2>SURAT PANGGILAN ORANG TUA MAHASASISWA</h2>
+
+</div>
+
+<p>
+Nomor :
+001/PA/PTIK/2026
+</p>
+
+<p>
+Kepada Yth.
+</p>
+
+<p>
+Bapak / Ibu <b>{{ data.nama_ortu }}</b>
+</p>
+
+<p>
+Dengan hormat,
+</p>
+
+<p align="justify">
+
+Berdasarkan hasil analisis menggunakan sistem
+<b>EduPredict ANN</b>,
+mahasiswa berikut teridentifikasi memiliki risiko akademik sehingga diperlukan komunikasi antara Pembimbing Akademik dan Orang Tua.
+
+</p>
+
+<table>
+
+<tr>
+<td width="180">Nama</td>
+<td width="20">:</td>
+<td>{{ data.nama }}</td>
+</tr>
+
+<tr>
+<td>NIM</td>
+<td>:</td>
+<td>{{ data.nim }}</td>
+</tr>
+
+<tr>
+<td>Angkatan</td>
+<td>:</td>
+<td>{{ data.angkatan }}</td>
+</tr>
+
+<tr>
+<td>IPK</td>
+<td>:</td>
+<td>{{ data.ipk }}</td>
+</tr>
+
+<tr>
+<td>Kategori Risiko</td>
+<td>:</td>
+<td><b>{{ data.hasil_prediksi }}</b></td>
+</tr>
+
+<tr>
+<td>SKS Lulus</td>
+<td>:</td>
+<td>{{ data.sks_lulus }}</td>
+</tr>
+
+<tr>
+<td>Mata Kuliah Mengulang</td>
+<td>:</td>
+<td>{{ data.mk_mengulang }}</td>
+</tr>
+
+</table>
+
+<br>
+
+<p align="justify">
+
+Sehubungan dengan hasil analisis tersebut, kami mengharapkan kehadiran Bapak/Ibu untuk berdiskusi mengenai perkembangan akademik mahasiswa.
+
+</p>
+
+<table>
+
+<tr>
+<td width="180">Hari/Tanggal</td>
+<td>: ..........................................</td>
+</tr>
+
+<tr>
+<td>Jam</td>
+<td>: ..........................................</td>
+</tr>
+
+<tr>
+<td>Tempat</td>
+<td>: Ruang Pembimbing Akademik</td>
+</tr>
+
+</table>
+
+<br>
+
+<p>
+
+Demikian surat ini kami sampaikan.
+
+Atas perhatian dan kerja samanya kami ucapkan terima kasih.
+
+</p>
+
+<div class="ttd">
+
+Bukittinggi, ........................
+
+<br><br><br><br><br>
+
+<b>
+
+(........................................)
+
+</b>
+
+<br>
+
+Pembimbing Akademik
+
+</div>
+
+</body>
+</html>

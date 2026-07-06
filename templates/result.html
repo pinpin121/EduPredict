@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Analisis - EduPredict ANN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-100 font-sans min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 max-w-3xl w-full overflow-hidden transition-all">
+        
+        <!-- HEADER KATEGORI RISIKO -->
+        <div class="{% if hasil == 'TINGGI' %}bg-red-700{% elif hasil == 'SEDANG' %}bg-amber-600{% else %}bg-emerald-700{% endif %} text-white text-center py-8 px-6">
+            <p class="text-xs font-bold uppercase tracking-widest opacity-80 mb-1">Hasil Komputasi Artificial Neural Network</p>
+            <h1 class="text-3xl font-black tracking-tight">Kategori Risiko: {{ hasil|title }}</h1>
+        </div>
+
+        <div class="p-8 space-y-6">
+            
+            <!-- DETAIL DIMENSI DATA MAHASISWA -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                
+                <!-- Dimensi Akademik -->
+                <div class="space-y-2.5">
+                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-wider border-b border-slate-200 pb-1.5">Dimensi Akademik</h3>
+                    <p class="text-sm text-slate-600">Nama / NIM: <strong class="text-slate-900">{{ data_mhs.nama }} ({{ data_mhs.nim }})</strong></p>
+                    <p class="text-sm text-slate-600">Angkatan / IPK: <strong class="text-slate-900">{{ data_mhs.angkatan }} / {{ "%.2f"|format(data_mhs.ipk) }}</strong></p>
+                    <p class="text-sm text-slate-600">SKS (Lulus/Ambil): <strong class="text-slate-900">{{ data_mhs.sks_lulus }} / {{ data_mhs.sks_diambil }}</strong></p>
+                    <p class="text-sm text-slate-600">MK Mengulang: 
+                        <strong class="{% if data_mhs.mk_mengulang > 0 %}text-red-600{% else %}text-emerald-600{% endif %}">
+                            {{ data_mhs.mk_mengulang }} Mata Kuliah
+                        </strong>
+                    </p>
+                </div>
+
+                <!-- Dimensi Sosial-Ekonomi & Wali -->
+                <div class="space-y-2.5">
+                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-wider border-b border-slate-200 pb-1.5">Dimensi Sosial-Ekonomi & Wali</h3>
+                    <p class="text-sm text-slate-600">Ekonomi Keluarga: <strong class="text-slate-900">{% if data_mhs.ekonomi == 1 %}Bermasalah{% else %}Sedang (Cukup){% endif %}</strong></p>
+                    <p class="text-sm text-slate-600">Dukungan Lingkungan: <strong class="text-slate-900">{% if data_mhs.lingkungan == 1 %}Kurang Kondusif{% else %}Cukup Kondusif{% endif %}</strong></p>
+                    <p class="text-sm text-slate-600">Nama Orang Tua: <strong class="text-slate-900">{{ data_mhs.nama_ortu }}</strong></p>
+                    <p class="text-sm text-slate-600">No. HP Orang Tua: <strong class="text-emerald-600 font-bold">{{ data_mhs.kontak_ortu }}</strong></p>
+                </div>
+            </div>
+
+            <!-- REKOMENDASI TINDAKAN / SARAN PAKAR -->
+            <div class="p-5 rounded-2xl border {% if hasil == 'TINGGI' %}bg-red-50/60 border-red-200 text-red-900{% elif hasil == 'SEDANG' %}bg-amber-50/60 border-amber-200 text-amber-900{% else %}bg-emerald-50/60 border-emerald-200 text-emerald-900{% endif %}">
+                <h4 class="text-sm font-bold flex items-center space-x-2 mb-2">
+                    <i class="fas fa-book-reader"></i>
+                    <span>Rekomendasi Tindakan & Tahapan Selanjutnya (Saran Pakar):</span>
+                </h4>
+                <p class="text-sm leading-relaxed font-medium">{{ data_mhs.saran_pakar }}</p>
+            </div>
+
+            <!-- TOMBOL AKSI / BUTTONS -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                <a href="https://wa.me/{{ data_mhs.kontak_ortu }}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-sm transition shadow-md flex items-center justify-center space-x-2">
+                    <i class="fab fa-whatsapp text-base"></i>
+                    <span>Hubungi Orang Tua</span>
+                </a>
+                
+                <a href="/cetak_surat/{{ data_mhs.id }}" target="_blank" class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-4 rounded-xl text-sm transition shadow-md flex items-center justify-center space-x-2">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Cetak PDF Mahasiswa Ini</span>
+                </a>
+
+                <a href="/dashboard" class="border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold py-3 px-4 rounded-xl text-sm transition text-center flex items-center justify-center">
+                    Kembali ke Dashboard
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

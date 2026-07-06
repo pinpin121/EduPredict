@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi Admin - EduPredict ANN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-100 font-sans min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+        <div class="bg-gradient-to-r from-emerald-700 to-emerald-800 p-6 text-center text-white">
+            <h2 class="text-xl font-bold">Daftar Admin Baru</h2>
+            <p class="text-xs text-emerald-200/80 mt-1">Sistem Komputasi Cerdas EduPredict ANN</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="p-4 bg-red-50 text-red-700 text-xs font-medium border-b border-red-200">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/register" method="POST" class="p-6 space-y-4 text-sm">
+            <div>
+                <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-1">Nama Lengkap:</label>
+                <input type="text" name="username" required placeholder="Nama Lengkap" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:bg-white text-slate-800">
+            </div>
+            <div>
+                <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-1">Email Resmi:</label>
+                <input type="email" name="email" required placeholder="admin@email.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:bg-white text-slate-800">
+            </div>
+            <div>
+                <label class="block font-semibold text-slate-700 uppercase tracking-wider text-xs mb-1">Kata Sandi:</label>
+                <input type="password" name="password" required placeholder="••••••••" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:bg-white text-slate-800">
+            </div>
+            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl uppercase tracking-wider text-xs">Daftar Akun Admin</button>
+        </form>
+
+        <div class="p-4 bg-slate-50 border-t border-slate-100 text-center text-xs text-slate-500">
+            Sudah punya akun? <a href="/login" class="text-emerald-600 font-semibold hover:underline">Masuk di sini</a>
+        </div>
+    </div>
+
+</body>
+</html>

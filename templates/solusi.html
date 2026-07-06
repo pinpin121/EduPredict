@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Solusi - EduPredict ANN{% endblock %}
+
+{% block content %}
+<div class="relative bg-cover bg-center min-h-[calc(100vh-88px)] flex items-center px-6 md:px-12 py-16" style="background-image: linear-gradient(to bottom, rgba(2, 44, 34, 0.95), rgba(4, 63, 47, 0.9)), url('/static/gedung_uin.jpeg');">
+    <div class="max-w-4xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-2xl text-white space-y-6">
+        <div class="inline-block bg-amber-500 text-emerald-950 font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-wider">
+            Framework & Intervensi
+        </div>
+        <h2 class="text-3xl font-black tracking-tight text-amber-400">Solusi AI terhadap Pencegahan Mahasiswa Putus Kuliah</h2>
+        <p class="text-sm leading-relaxed opacity-90">
+            Sistem <b>EduPredict ANN</b> memberikan pendekatan preventif berbasis kecerdasan komputasi untuk meminimalkan angka drop-out melalui 3 pilar utama:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+            <div class="bg-emerald-950/50 p-5 rounded-2xl border border-emerald-500/20">
+                <i class="fas fa-chart-line text-amber-400 text-xl mb-3"></i>
+                <h4 class="font-bold text-sm mb-1 text-amber-300">Deteksi Multi-Indikator</h4>
+                <p class="text-[11px] opacity-80 leading-relaxed">Menganalisis perpaduan nilai akademik (IPK, SKS) beserta kondisi ekonomi dan lingkungan secara serentak.</p>
+            </div>
+            <div class="bg-emerald-950/50 p-5 rounded-2xl border border-emerald-500/20">
+                <i class="fas fa-brain text-amber-400 text-xl mb-3"></i>
+                <h4 class="font-bold text-sm mb-1 text-amber-300">Klasifikasi JST Akurat</h4>
+                <p class="text-[11px] opacity-80 leading-relaxed">Menggunakan algoritma Jaringan Saraf Tiruan untuk memetakan tingkat kerawanan (Tinggi, Sedang, Rendah).</p>
+            </div>
+            <div class="bg-emerald-950/50 p-5 rounded-2xl border border-emerald-500/20">
+                <i class="fas fa-comment-medical text-amber-400 text-xl mb-3"></i>
+                <h4 class="font-bold text-sm mb-1 text-amber-300">Rekomendasi Pakar</h4>
+                <p class="text-[11px] opacity-80 leading-relaxed">Menghasilkan draf saran tindakan konkret secara otomatis bagi dosen penasihat akademik dan orang tua.</p>
+            </div>
+        </div>
+        
+        <div class="pt-4 text-center">
+            <a href="/" class="text-xs font-bold text-amber-400 hover:underline"><i class="fas fa-arrow-left mr-1"></i> Kembali ke Beranda</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

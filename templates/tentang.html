@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}Tentang Kami - EduPredict ANN{% endblock %}
+
+{% block content %}
+<div class="relative bg-cover bg-center min-h-[calc(100vh-88px)] flex items-center px-6 md:px-12 py-16" style="background-image: linear-gradient(to bottom, rgba(2, 44, 34, 0.95), rgba(4, 63, 47, 0.9)), url('/static/gedung_uin.jpeg');">
+    <div class="max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-2xl text-white text-center space-y-6">
+        
+        <div class="w-24 h-24 bg-gradient-to-tr from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-emerald-950 text-3xl font-black mx-auto shadow-lg border-2 border-white/50">
+            VA
+        </div>
+        
+        <div>
+            <h2 class="text-2xl font-black tracking-tight text-amber-400">Vina Ariska</h2>
+            <p class="text-xs text-emerald-200 mt-1 font-mono">Peneliti / Administrator Sistem</p>
+        </div>
+
+        <div class="border-t border-white/10 pt-4 text-xs space-y-3 max-w-md mx-auto text-left leading-relaxed">
+            <div class="bg-emerald-950/40 p-3 rounded-xl flex items-center justify-between">
+                <span class="opacity-75">Afiliasi Resmi:</span>
+                <span class="font-bold text-right text-amber-300">UIN Syech M. Djamil Djambek Bukittinggi</span>
+            </div>
+            <div class="bg-emerald-950/40 p-3 rounded-xl flex items-center justify-between">
+                <span class="opacity-75">Lokasi Riset:</span>
+                <span class="font-bold text-amber-300">Kampus 2, Bukittinggi</span>
+            </div>
+            <div class="bg-emerald-950/40 p-3 rounded-xl flex items-center justify-between">
+                <span class="opacity-75">Fokus Penelitian:</span>
+                <span class="font-bold text-amber-300">Artificial Neural Network (ANN)</span>
+            </div>
+        </div>
+
+        <p class="text-[11px] opacity-75 max-w-md mx-auto leading-relaxed italic">
+            "Sistem ini dikembangkan sebagai implementasi kecerdasan buatan terapan untuk mendukung optimalisasi manajemen data pendidikan dan menekan laju angka drop-out mahasiswa."
+        </p>
+
+        <div class="pt-2">
+            <a href="/" class="text-xs font-bold text-amber-400 hover:underline"><i class="fas fa-arrow-left mr-1"></i> Kembali ke Beranda</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

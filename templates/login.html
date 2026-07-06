@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EduPredict ANN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Menggunakan warna gradien emerald cerdas sebagai fallback jika gambar tidak dimuat */
+        .bg-uin-real {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.88) 0%, rgba(4, 120, 87, 0.94) 100%), 
+                        url("{{ url_for('static', filename='gedung_uin.jpeg') }}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4 bg-uin-real">
+
+    <div class="w-full max-w-md bg-white/95 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/20 transition-all duration-300 hover:shadow-emerald-950/20">
+        
+        <div class="text-center mb-8">
+            <div class="flex items-center justify-center mb-4">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo Aplikasi" class="h-16 w-auto object-contain mx-auto">
+            </div>
+            <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase leading-snug">
+                SISTEM ANALISIS KOMPUTASI<br>JARINGAN SARAF TIRUAN
+            </h2>
+            <p class="text-slate-500 text-xs font-semibold mt-2 uppercase tracking-wider">
+                Multi-Layer Perceptron
+            </p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="mb-5 p-4 rounded-xl text-xs font-bold border flex items-center space-x-2 {% if category == 'danger' %} bg-red-50 text-red-800 border-red-200 {% else %} bg-emerald-50 text-emerald-800 border-emerald-200 {% endif %}">
+                        <i class="fas {% if category == 'danger' %} fa-exclamation-circle {% else %} fa-check-circle {% endif %} text-base"></i>
+                        <span>{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/login" method="POST" class="space-y-5">
+            <div>
+                <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Alamat Email Admin</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                        <i class="fas fa-envelope text-sm"></i>
+                    </span>
+                    <input type="email" name="email" required placeholder="admin@example.com" 
+                           class="w-full pl-11 pr-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm font-medium transition-all bg-white">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-2">Kata Sandi / Password</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                        <i class="fas fa-lock text-sm"></i>
+                    </span>
+                    <input type="password" name="password" required placeholder="••••••••" 
+                           class="w-full pl-11 pr-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm font-medium transition-all bg-white">
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs pt-1">
+                <label class="flex items-center space-x-2 text-slate-600 font-medium cursor-pointer select-none">
+                    <input type="checkbox" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 bg-slate-50">
+                    <span>Ingat saya</span>
+                </label>
+                <a href="{{ url_for('forgot_password') }}" class="font-bold text-emerald-600 hover:text-emerald-700 hover:underline transition-colors">
+                    Lupa kata sandi?
+                </a>
+            </div>
+
+            <button type="submit" 
+                    class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md shadow-emerald-600/10 hover:shadow-lg hover:shadow-emerald-600/20 active:scale-[0.99] transition-all duration-150 text-sm mt-2 flex items-center justify-center space-x-2">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>login</span>
+            </button>
+        </form>
+
+        <div class="text-center mt-6 text-sm text-slate-500 border-t border-slate-100 pt-4">
+            Belum punya akun admin? 
+            <a href="{{ url_for('register') }}" class="font-bold text-emerald-600 hover:text-emerald-700 hover:underline ml-1">
+                Register
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
