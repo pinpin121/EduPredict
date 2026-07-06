@@ -1,0 +1,10 @@
+Flask
+Flask-Mail
+Werkzeug
+itsdangerous
+pandas
+numpy
+joblib
+tensorflow
+reportlab
+gunicorn
