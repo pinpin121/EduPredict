@@ -476,7 +476,7 @@ def predict():
     nama_ortu = request.form.get("nama_ortu")
     kontak_ortu = request.form.get("kontak_ortu")
     
-    # Validasi input kosong wajib
+        # Validasi input kosong wajib
     if not nim or not nama or not ipk or not angkatan or not sks_diambil or not sks_lulus:
         flash("NIM, Nama, Angkatan, IPK, SKS Diambil, dan SKS Lulus wajib diisi!", "danger")
         return redirect(url_for("dashboard"))
@@ -494,6 +494,44 @@ def predict():
         int_paruh = int(paruh_waktu)
         int_salah_jurusan = int(salah_jurusan)
         
+        # ============================
+        # VALIDASI LOGIKA INPUT
+        # ============================
+        # Validasi IPK
+        if float_ipk < 0 or float_ipk > 4:
+            flash("IPK harus berada pada rentang 0.00 sampai 4.00.", "danger")
+            return redirect(url_for("dashboard"))
+
+        # Validasi SKS Diambil
+        if int_sks_diambil < 0 or int_sks_diambil > 144:
+            flash("Jumlah SKS yang diambil harus berada pada rentang 0 sampai 144 SKS.", "danger")
+            return redirect(url_for("dashboard"))
+
+        # Validasi SKS Lulus
+        if int_sks_lulus < 0:
+            flash("Jumlah SKS lulus tidak boleh bernilai negatif.", "danger")
+            return redirect(url_for("dashboard"))
+
+        if int_sks_lulus > int_sks_diambil:
+            flash("Jumlah SKS lulus tidak boleh melebihi jumlah SKS yang diambil.", "danger")
+            return redirect(url_for("dashboard"))
+        # ==========================================
+        # VALIDASI LOGIKA MK MENGULANG
+        # ==========================================
+
+        selisih_sks = int_sks_diambil - int_sks_lulus
+
+        if int_mk_mengulang != selisih_sks:
+            flash(
+                f"Jumlah mata kuliah mengulang harus {selisih_sks} sesuai selisih SKS Diambil dan SKS Lulus.",
+                "danger"
+            )
+            return redirect(url_for("dashboard"))
+        # Validasi Mata Kuliah Mengulang
+        if int_mk_mengulang < 0:
+            flash("Jumlah mata kuliah mengulang tidak boleh bernilai negatif.", "danger")
+            return redirect(url_for("dashboard"))
+
         # HITUNG OTOMATIS PERSENTASE LULUS (Mencegah pembagian dengan nol)
         if int_sks_diambil > 0:
             persentase_lulus = (int_sks_lulus / int_sks_diambil) * 100
@@ -681,5 +719,5 @@ def edit_admin(id):
         admin=admin
     )
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=7860, debug=False)
