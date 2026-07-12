@@ -132,7 +132,15 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-1.5">SKS Diambil</label>
-                                <input type="number" name="sks_diambil" required placeholder="100" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm font-medium transition">
+                                <input type="number"
+                            id="sks_diambil"
+                            name="sks_diambil"
+                            min="0"
+                            max="144"
+                            required
+                            placeholder="100"
+                            oninput="validasiSKS(this)"
+                            class="w-full px-3.5 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 text-sm font-medium transition">
                             </div>
                             <div>
                                 <label class="block text-xs font-black text-slate-500 uppercase tracking-wider mb-1.5">SKS Lulus</label>
@@ -325,5 +333,6 @@
         window.open('/download_pdf?type=' + type + '&val=' + encodeURIComponent(value), '_blank');
     }
     </script>
+    
 </body>
 </html>
